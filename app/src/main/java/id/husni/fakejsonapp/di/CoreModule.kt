@@ -4,6 +4,7 @@ import id.husni.fakejsonapp.data.network.ApiService
 import id.husni.fakejsonapp.main.MainViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -29,5 +30,5 @@ val networkModule = module {
     }
 }
 val viewModelModule = module {
-    single { MainViewModel(get()) }
+    viewModel { MainViewModel(get()) }
 }
