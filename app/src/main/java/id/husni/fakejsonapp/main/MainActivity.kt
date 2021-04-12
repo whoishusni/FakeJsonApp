@@ -1,13 +1,13 @@
-package id.husni.fakejsonapp
+package id.husni.fakejsonapp.main
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
-import id.husni.fakejsonapp.adapter.UserAdapter
+import id.husni.fakejsonapp.ui.UserAdapter
 import id.husni.fakejsonapp.databinding.ActivityMainBinding
-import id.husni.fakejsonapp.viewmodel.MainViewModel
+import kotlinx.coroutines.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -25,13 +25,14 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = rvAdapter
         }
-        mainViewModel.getUser().asLiveData().observe(this, { data ->
-            if (data != null) {
-                rvAdapter.setUserData(data)
-                binding.mainProgressBar.visibility = View.GONE
-            }
-        })
-
+        GlobalScope.launch(Dispatchers.Main){
+            mainViewModel.getUser().asLiveData().observe(this@MainActivity, { data ->
+                if (data != null) {
+                    rvAdapter.setUserData(data)
+                    binding.mainProgressBar.visibility = View.GONE
+                }
+            })
+        }
 
     }
 

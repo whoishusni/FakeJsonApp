@@ -1,7 +1,7 @@
-package id.husni.fakejsonapp.injection
+package id.husni.fakejsonapp.di
 
-import id.husni.fakejsonapp.service.ApiService
-import id.husni.fakejsonapp.viewmodel.MainViewModel
+import id.husni.fakejsonapp.data.network.ApiService
+import id.husni.fakejsonapp.main.MainViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

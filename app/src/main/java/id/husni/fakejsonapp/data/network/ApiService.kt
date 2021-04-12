@@ -1,6 +1,6 @@
-package id.husni.fakejsonapp.service
+package id.husni.fakejsonapp.data.network
 
-import id.husni.fakejsonapp.model.Users
+import id.husni.fakejsonapp.data.model.Users
 import retrofit2.http.GET
 
 interface ApiService {

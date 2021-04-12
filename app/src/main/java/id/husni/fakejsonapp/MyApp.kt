@@ -1,8 +1,8 @@
 package id.husni.fakejsonapp
 
 import android.app.Application
-import id.husni.fakejsonapp.injection.networkModule
-import id.husni.fakejsonapp.injection.viewModelModule
+import id.husni.fakejsonapp.di.networkModule
+import id.husni.fakejsonapp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

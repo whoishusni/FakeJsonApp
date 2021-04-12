@@ -1,16 +1,16 @@
-package id.husni.fakejsonapp.viewmodel
+package id.husni.fakejsonapp.main
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import id.husni.fakejsonapp.model.Users
-import id.husni.fakejsonapp.service.ApiService
+import id.husni.fakejsonapp.data.model.Users
+import id.husni.fakejsonapp.data.network.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class MainViewModel(private val apiService: ApiService) : ViewModel() {
-    fun getUser(): Flow<List<Users>> {
+    suspend fun getUser(): Flow<List<Users>> {
         return flow {
             try {
                 val dataArray = apiService.getUsers()

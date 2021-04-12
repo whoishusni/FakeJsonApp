@@ -1,4 +1,4 @@
-package id.husni.fakejsonapp.model
+package id.husni.fakejsonapp.data.model
 
 import com.google.gson.annotations.SerializedName
 

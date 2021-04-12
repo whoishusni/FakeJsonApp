@@ -1,4 +1,4 @@
-package id.husni.fakejsonapp.adapter
+package id.husni.fakejsonapp.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import id.husni.fakejsonapp.R
 import id.husni.fakejsonapp.databinding.ItemListBinding
-import id.husni.fakejsonapp.model.Users
+import id.husni.fakejsonapp.data.model.Users
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     private val listData = ArrayList<Users>()
