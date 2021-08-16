@@ -3,6 +3,9 @@ package id.husni.fakejsonapp.data.model
 import com.google.gson.annotations.SerializedName
 
 data class Users(
+    @field:SerializedName("id")
+    val id: Int,
+
     @field:SerializedName("name")
     val name: String,
 

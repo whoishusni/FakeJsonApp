@@ -3,18 +3,20 @@ package id.husni.fakejsonapp.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import id.husni.fakejsonapp.R
 import id.husni.fakejsonapp.databinding.ItemListBinding
 import id.husni.fakejsonapp.data.model.Users
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
-    private val listData = ArrayList<Users>()
-    fun setUserData(items: List<Users>) {
-        if (items.isNullOrEmpty()) return
-        listData.clear()
-        listData.addAll(items)
-        notifyDataSetChanged()
+    private val oldUser = ArrayList<Users>()
+    fun setUserData(newUser: List<Users>) {
+        val diffUtilCallback = DiffUtilUser(oldUser,newUser)
+        val diffCalculate = DiffUtil.calculateDiff(diffUtilCallback)
+        oldUser.clear()
+        oldUser.addAll(newUser)
+        diffCalculate.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapter.UserViewHolder {
@@ -23,10 +25,10 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: UserAdapter.UserViewHolder, position: Int) {
-        holder.bind(listData[position])
+        holder.bind(oldUser[position])
     }
 
-    override fun getItemCount(): Int = listData.size
+    override fun getItemCount(): Int = oldUser.size
 
     class UserViewHolder(private val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
